@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from deepface import DeepFace
 from PIL import Image, ImageSequence
-from flask import Flask, render_template, request, redirect, url_for, Response, jsonify, current_app
+from flask import Flask, render_template, request, redirect, url_for, Response, jsonify, current_app, session
 from flask_socketio import SocketIO
 from PIL import Image
 import os
@@ -278,9 +278,32 @@ def analyze():
     if not os.path.exists("picture/temp_image.jpg"):
         return "File not Exist"
 
+    emotion_descriptions = {
+    "happy": "Feeling joyous and content.",
+    "sad": "Feeling sorrowful or unhappy.",
+    "angry": "Feeling intense displeasure or hostility.",
+    "fear": "Feeling scared or anxious.",
+    "surprise": "Feeling astonished or amazed.",
+    "neutral": "Showing no particular emotion.",
+    "disgust": "Feeling revulsion or strong disapproval."
+    }
+    
     face_analysis = DeepFace.analyze(img_path="picture/temp_image.jpg")
     emotion = face_analysis[0]['dominant_emotion']
-    return render_template('result.html', image="temp_image.jpg", emotion=emotion)
+
+    expected_emotion = request.form.get('expected_emotion')
+        
+    emoji_urls = {
+        "happy": "emojis/happy.png",
+        # Add URLs for other emotions here
+    }
+    emoji_url = emoji_urls.get(emotion, "https://example.com/default_emoji.gif")
+    emotion_description = emotion_descriptions.get(emotion, "No description available.")
+    return render_template('result.html',
+                           image="picture/temp_image.jpg",
+                           emotion=emotion,
+                           description=emotion_description,
+                           emoji_url=emoji_url)
 
 
 @app.route('/username') 
