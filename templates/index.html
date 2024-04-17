@@ -7,10 +7,25 @@
 </head>
 <body>
     <h1>Welcome to Face Emotion Detection</h1>
+    <p>Please perform Webcam Face Detection before proceeding to Emotion Analysis.</p>
     <a href="/picture">Dectect Emotion from image</a>
     <a href="/video_feed">Webcam Face Detection</a>
+    <a href="/username">Emotion Anaylsis</a>
     <a href="/about">About</a>
 </body>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'q') {
+                fetch('/stop_video_feed', { method: 'POST' })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.href = "{{ url_for('index') }}";
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        });
+    </script>
 </html>
 
 

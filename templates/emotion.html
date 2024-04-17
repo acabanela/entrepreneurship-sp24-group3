@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Analysis</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Emotion Analysis Results</h1>
+    
+    <h2>Emotion Descriptions:</h2>
+    <ul>
+        {% for emotion, description in descriptions.items() %}
+            <li><strong>{{ emotion }}:</strong> {{ description }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Bar Plot of Emotion Counts:</h2>
+    {{ bar_plot_div | safe }}
+
+    <h2>Time Series Plot on Emotion:</h2>
+    {{ time_series_plot_div | safe }}
+</body>
+</html>
