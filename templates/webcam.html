@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webcam Face Detection</title>
+    <title>Face Detection</title>
     <style>
         /* Add CSS styles here */
         body {
@@ -39,10 +39,7 @@
         .upload-btn:hover {
             background-color: #ff66cc; /* Light Pink */
         }
-        button[type="submit"] {
-            display: none;
-        }
-        .analyze-btn {
+        .capture-btn {
             display: inline-block;
             padding: 15px 30px;
             font-size: 24px;
@@ -54,8 +51,11 @@
             transition: background-color 0.3s ease;
             cursor: pointer;
         }
-        .analyze-btn:hover {
+        .capture-btn:hover {
             background-color: #ff66cc; /* Light Pink */
+        }
+        button[type="submit"] {
+            display: none;
         }
         .hidden {
             display: none;
@@ -63,22 +63,56 @@
     </style>
 </head>
 <body>
-    <h1>Get Ready to Unleash Your Emotions!</h1>
+    <h1>Face Detection</h1>
     <form action="/analyze" method="post" enctype="multipart/form-data" id="upload-form">
         <label for="file" class="upload-btn">Upload an Image</label>
         <input type="file" id="file" name="file" accept="image/*">
         <button type="submit" class="analyze-btn hidden">Analyze</button>
+        <input type="hidden" id="captured-image" name="captured_image">
     </form>
+    <button id="capture-btn" class="capture-btn">Capture Picture</button>
     <p id="loading-text" class="hidden">Analyzing...</p>
     <a href="/" class="upload-btn">Go Back</a>
 
-    <!-- Add JavaScript for file upload functionality -->
+    <!-- Add JavaScript for file upload and capture functionality -->
     <script>
         document.getElementById('file').addEventListener('change', function() {
             document.getElementById('loading-text').classList.remove('hidden');
             document.getElementById('upload-form').submit();
         });
+
+        document.getElementById('capture-btn').addEventListener('click', function() {
+            document.getElementById('loading-text').classList.remove('hidden');
+            // Send a request to the server to capture a picture from the webcam
+            fetch('/take-screenshot', {
+                method: 'POST'
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                // Convert the blob to a base64 string
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.onerror = error => reject(error);
+                });
+            })
+            .then(base64String => {
+                // Set the captured image data in a hidden input field
+                document.getElementById('captured-image').value = base64String;
+                // Submit the form to the /analyze endpoint
+                document.getElementById('upload-form').submit();
+            })
+            .catch(error => console.error('Error capturing picture:', error));
+        });
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
 

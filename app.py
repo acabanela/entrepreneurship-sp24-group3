@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from deepface import DeepFace
 from PIL import Image, ImageSequence
-from flask import Flask, render_template, request, redirect, url_for, Response, jsonify, current_app, session
+from flask import Flask, render_template, request, redirect, url_for, Response, jsonify, current_app, session, send_file
 from flask_socketio import SocketIO
 from PIL import Image
 import os
@@ -199,6 +199,24 @@ def index():
         return render_template('index.html')
 
 
+@app.route('/take-screenshot', methods=['POST'])
+def take_screenshot():
+    # Capture a screenshot and save it as a JPEG file
+    camera = cv2.VideoCapture(0)
+    
+    time.sleep(3)
+    # Capture a picture
+    ret, frame = camera.read()
+    
+    # Release the camera
+    camera.release()
+    now = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    cv2.imwrite('sreenshot_pict.jpg', frame)
+    
+    # Return the captured picture as a response
+    return send_file('sreenshot_pict.jpg', mimetype='image/jpeg')
+
+
 @app.route('/about', methods=['GET', 'POST'])
 def about():
     """
@@ -254,6 +272,16 @@ def picture():
         return redirect(url_for('index'))
     return render_template('webcam.html')
 
+emotion_descriptions = {
+    "happy": "Feeling joyous and content. Happiness is a positive emotion that arises from experiencing pleasure, satisfaction, or success. It can be expressed through smiling, laughter, and a generally upbeat demeanor. Happiness contributes to overall well-being and can be contagious, spreading positivity to those around us.",
+    "sad": "Feeling sorrowful or unhappy. Sadness is a natural human emotion often triggered by loss, disappointment, or failure. It's characterized by feelings of grief, loneliness, or despair. While sadness can be uncomfortable, it's important to acknowledge and express these emotions, as doing so can lead to healing and emotional growth.",
+    "angry": "Feeling intense displeasure or hostility. Anger is a powerful emotion that arises in response to perceived threats, injustices, or frustrations. It's often accompanied by physical sensations like increased heart rate and muscle tension. While anger itself is not inherently negative, it's important to manage it constructively to avoid harmful behaviors and maintain healthy relationships.",
+    "fear": "Feeling scared or anxious. Fear is an adaptive response to perceived danger or threat. It triggers a fight, flight, or freeze reaction in the body, preparing us to respond to potential harm. While fear can be protective, excessive or irrational fear can interfere with daily life. Overcoming fear often involves facing it gradually and developing coping strategies to manage anxiety.",
+    "surprise": "Feeling astonished or amazed. Surprise is a brief, intense emotion that occurs in response to unexpected events or stimuli. It's characterized by a sudden shift in attention and physiological arousal. Surprise can be positive or negative depending on the context, but it adds excitement and novelty to our experiences.",
+    "neutral": "Showing no particular emotion. Neutrality is a state of emotional calmness and balance where no strong feelings or reactions are present. It can be a temporary state or a habitual response to certain situations. While neutrality may seem unremarkable, it can serve as a valuable buffer against stress and overwhelm.",
+    "disgust": "Feeling revulsion or strong disapproval. Disgust is an aversive emotion triggered by offensive or repulsive stimuli, such as foul odors, unsanitary conditions, or morally objectionable behavior. It serves as a protective mechanism to avoid potentially harmful substances or situations. While disgust may be unpleasant, it plays an important role in maintaining hygiene and social norms."
+    }
+
 
 # Route for analyzing uploaded images
 @app.route('/analyze', methods=['POST'])
@@ -268,27 +296,22 @@ def analyze():
     Returns:
         str: Rendered HTML template with image and dominant emotion.
     """
-    file = request.files['file']
+    if (request.files['file']):
+        file = request.files['file']
     # Ensure "picture" directory exists
-    if not os.path.exists("picture"):
-        os.makedirs("picture")
-    image = Image.open(file)
-    image.save("picture/temp_image.jpg")
+        if not os.path.exists("picture"):
+            os.makedirs("picture")
+        image = Image.open(file)
+        image.save("picture/temp_image.jpg")
 
-    if not os.path.exists("picture/temp_image.jpg"):
-        return "File not Exist"
-
-    emotion_descriptions = {
-    "happy": "Feeling joyous and content.",
-    "sad": "Feeling sorrowful or unhappy.",
-    "angry": "Feeling intense displeasure or hostility.",
-    "fear": "Feeling scared or anxious.",
-    "surprise": "Feeling astonished or amazed.",
-    "neutral": "Showing no particular emotion.",
-    "disgust": "Feeling revulsion or strong disapproval."
-    }
+        if not os.path.exists("picture/temp_image.jpg"):
+            return "File not Exist"
     
-    face_analysis = DeepFace.analyze(img_path="picture/temp_image.jpg")
+        img = face_analysis = DeepFace.analyze(img_path="picture/temp_image.jpg")
+        "picture/temp_image.jpg"
+    else:
+        face_analysis = DeepFace.analyze(img_path="sreenshot_pict.jpg")
+        img = "picture/temp_image.jpg"
     emotion = face_analysis[0]['dominant_emotion']
 
     expected_emotion = request.form.get('expected_emotion')
@@ -300,7 +323,7 @@ def analyze():
     emoji_url = emoji_urls.get(emotion, "https://example.com/default_emoji.gif")
     emotion_description = emotion_descriptions.get(emotion, "No description available.")
     return render_template('result.html',
-                           image="picture/temp_image.jpg",
+                           image=img,
                            emotion=emotion,
                            description=emotion_description,
                            emoji_url=emoji_url)
@@ -319,6 +342,14 @@ def username():
 
 @app.route('/emotion', methods=['GET', 'POST'])    
 def emotion():
+    """
+    This function processes emotion data obtained from a CSV file and generates visualizations.
+    It reads the CSV file based on the username provided in the form, groups the data by emotion,
+    and creates bar charts and time series graphs to visualize the occurrence of each emotion over time.
+    
+    Returns:
+        str: Rendered HTML template containing the visualizations and emotion descriptions.
+    """
     # Read the CSV file
     name = request.form['username']
     print(name)
@@ -384,13 +415,14 @@ def emotion():
     
     # Define descriptions for each emotion
     emotion_descriptions = {
-        "happy": "Patientis is feeling joy satisfication. Keep on going. ",
-        "sad": "Patient is feeling sorrowful or unhappy.",
-        "fear": "Patient feeling stressed out. Need to take a break!",
-        "disgust": "Feeling a strong aversion or repugnance.",
-        "neutral": "Feeling Normal. Kepp on going going. You got it.!"
-        # Add more descriptions as needed
+        "happy": "Patient is is feeling joy satisfication. Keep on going. \n Celebrate with them by sharing in their excitement.",
+        "sad": "Patient is feeling sorrowful or unhappy. \n Listen to them attentively and empathize with their feelings.",
+        "fear": "Patient feeling stressed out. Need to take a break! \n Reassure them that it's okay to feel afraid and that they are not alone.",
+        "disgust": "Feeling a strong aversion or repugnance.  \n Listen to their concerns without judgment.",
+        "neutral": "Feeling Normal. Keep on going going. You got it! Be \n attentive and observant, as they may be concealing their true feelings.",
+        "angry": "Very upset. Need some cooldown. Give them so tea or ice cream!"
     }
+
     
     # Assign descriptions based on the top 2 emotions
     descriptions = {}
