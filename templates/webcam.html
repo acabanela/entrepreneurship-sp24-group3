@@ -1,17 +1,84 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webcam Face Detection</title>
+    <style>
+        /* Add CSS styles here */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ff99cc; /* Light Pink */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            color: #ff0066; /* Pink */
+            font-size: 36px;
+            margin-top: 50px;
+        }
+        form {
+            margin-top: 50px;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .upload-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            background-color: #ff3399; /* Dark Pink */
+            color: #fff; /* White */
+            text-decoration: none;
+            border-radius: 20px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .upload-btn:hover {
+            background-color: #ff66cc; /* Light Pink */
+        }
+        button[type="submit"] {
+            display: none;
+        }
+        .analyze-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            background-color: #ff3399; /* Dark Pink */
+            color: #fff; /* White */
+            text-decoration: none;
+            border-radius: 20px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .analyze-btn:hover {
+            background-color: #ff66cc; /* Light Pink */
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Real time face emotion recognition of webcam feed</h1>
-    <form action="/analyze" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <button type="submit">Analyze</button>
+    <h1>Get Ready to Unleash Your Emotions!</h1>
+    <form action="/analyze" method="post" enctype="multipart/form-data" id="upload-form">
+        <label for="file" class="upload-btn">Upload an Image</label>
+        <input type="file" id="file" name="file" accept="image/*">
+        <button type="submit" class="analyze-btn hidden">Analyze</button>
     </form>
-    <a href="/">Go Back</a>
+    <p id="loading-text" class="hidden">Analyzing...</p>
+    <a href="/" class="upload-btn">Go Back</a>
+
+    <!-- Add JavaScript for file upload functionality -->
+    <script>
+        document.getElementById('file').addEventListener('change', function() {
+            document.getElementById('loading-text').classList.remove('hidden');
+            document.getElementById('upload-form').submit();
+        });
+    </script>
 </body>
 </html>
+

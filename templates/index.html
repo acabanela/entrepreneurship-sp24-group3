@@ -4,29 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Face Emotion Detection</title>
+    <style>
+        body {
+            background-color: #ffcc00; /* Yellow */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #ff007f; /* Hot Pink */
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #3399ff; /* Blue */
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        a {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            background-color: #ff007f; /* Hot Pink */
+            color: #fff; /* White */
+            text-decoration: none;
+            border-radius: 20px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #ff66b3; /* Light Pink */
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Face Emotion Detection</h1>
-    <p>Please perform Webcam Face Detection before proceeding to Emotion Analysis.</p>
-    <a href="/picture">Dectect Emotion from image</a>
-    <a href="/video_feed">Webcam Face Detection</a>
-    <a href="/username">Emotion Anaylsis</a>
-    <a href="/about">About</a>
+    <h1>Welcome to the Crazy Face Emotion Detection!</h1>
+    <p>Get ready for some wild and wacky emotions! Start by performing Webcam Face Detection below.</p>
+    <a href="/picture">Detect Emotion from Image</a>
+    <a href="/video_feed">Start Webcam Face Detection</a>
+    <a href="/username">Analyze Emotion</a>
+    <a href="/about">Learn More About Us</a>
 </body>
-    <script>
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'q') {
-                fetch('/stop_video_feed', { method: 'POST' })
-                    .then(response => {
-                        if (response.ok) {
-                            window.location.href = "{{ url_for('index') }}";
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-        });
-    </script>
+<script>
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'q') {
+            fetch('/stop_video_feed', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = "{{ url_for('index') }}";
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    });
+</script>
 </html>
+
 
 
 

@@ -4,10 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emotion Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            background-color: #ffcc00; /* Yellow */
+            font-family: 'Baloo 2', cursive;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff007f; /* Hot Pink */
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #33ccff; /* Light Blue */
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+        li {
+            color: #ff6666; /* Light Red */
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .plot {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Emotion Analysis Results</h1>
+    <h1>Welcome to the Emotion Analysis Results</h1>
     
     <h2>Emotion Descriptions:</h2>
     <ul>
@@ -17,9 +51,14 @@
     </ul>
     
     <h2>Bar Plot of Emotion Counts:</h2>
-    {{ bar_plot_div | safe }}
+    <div class="plot">
+        {{ bar_plot_div | safe }}
+    </div>
 
     <h2>Time Series Plot on Emotion:</h2>
-    {{ time_series_plot_div | safe }}
+    <div class="plot">
+        {{ time_series_plot_div | safe }}
+    </div>
 </body>
 </html>
+
