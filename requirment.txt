@@ -1,0 +1,8 @@
+opencv-python
+numpy
+deepface
+Pillow
+Flask
+flask-socketio
+matplotlib
+plotly
