@@ -122,11 +122,11 @@ def generate_frames(name="asset"):
                 break
 
             # Save frame as temporary image
-            cv2.imwrite("picture/temp_frame.jpg", frame)
+            cv2.imwrite("static/picture/temp_frame.jpg", frame)
 
             # Analyze the frame using DeepFace for emotion detection
             with concurrent.futures.ThreadPoolExecutor() as executor:
-                face_analysis = deepface_frame("picture/temp_frame.jpg")
+                face_analysis = deepface_frame("static/picture/temp_frame.jpg")
                 if face_analysis is not None:
                     emotion = face_analysis[0]['dominant_emotion']
                     emotion_list.append(emotion)
@@ -302,22 +302,30 @@ def analyze():
         if not os.path.exists("picture"):
             os.makedirs("picture")
         image = Image.open(file)
-        image.save("picture/temp_image.jpg")
+        # image = image.resize((800, 600))
+        image.save("static/picture/temp_image.jpg")
 
-        if not os.path.exists("picture/temp_image.jpg"):
+        if not os.path.exists("static/picture/temp_image.jpg"):
             return "File not Exist"
     
-        img = face_analysis = DeepFace.analyze(img_path="picture/temp_image.jpg")
-        "picture/temp_image.jpg"
+        face_analysis = DeepFace.analyze(img_path="static/picture/temp_image.jpg")
+        img = "static/picture/temp_image.jpg"
     else:
+        image = Image.open("sreenshot_pict.jpg")
+        image.save("static/picture/temp_image.jpg")
         face_analysis = DeepFace.analyze(img_path="sreenshot_pict.jpg")
-        img = "picture/temp_image.jpg"
+        img = "static/picture/temp_image.jpg"
     emotion = face_analysis[0]['dominant_emotion']
 
     expected_emotion = request.form.get('expected_emotion')
         
     emoji_urls = {
-        "happy": "emojis/happy.png",
+        "happy": "https://giphy.com/embed/chzz1FQgqhytWRWbp3",
+        "sad": "https://giphy.com/embed/QJY9tY29IQGMU",
+        "angry": "https://giphy.com/embed/11tTNkNy1SdXGg",
+        "fear": "https://giphy.com/embed/PaG51G9OKKdKU",
+        "disgust": "https://giphy.com/embed/rP6BL1bifRBBK",
+        "neutral": "https://giphy.com/embed/1gQwMNJ9z1mqABgQd3",
         # Add URLs for other emotions here
     }
     emoji_url = emoji_urls.get(emotion, "https://example.com/default_emoji.gif")
