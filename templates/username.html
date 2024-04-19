@@ -3,63 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - Emotion Explorers</title>
     <style>
         body {
-            background-color: #ffcc00; /* Yellow */
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f4fc;
+            color: #333;
             text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh;
+            position: relative; 
+        }
+        .login-container {
+            position: relative; 
+            max-width: 1000px; 
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .login-image {
+            max-height: 600px;
+            margin-right: 20px; 
+        }
+        .container {
+            width: 400px;
+            padding: 40px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
         }
         h1 {
-            color: #ff007f; /* Hot Pink */
-            font-size: 36px;
+            color: #5d76cb;
             margin-bottom: 20px;
         }
-        p {
-            color: #3399ff; /* Blue */
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-        label {
-            display: block;
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #ff6666; /* Light Red */
-        }
-        input[type="text"] {
-            padding: 10px;
+        button {
+            background-color: #5d76cb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
             font-size: 20px;
             border-radius: 10px;
-            border: 3px solid #ff007f; /* Hot Pink */
-            width: 300px;
-            margin-bottom: 30px;
-            outline: none;
-        }
-        button[type="submit"] {
-            padding: 15px 30px;
-            font-size: 24px;
-            background-color: #ff007f; /* Hot Pink */
-            color: #fff; /* White */
-            border: none;
-            border-radius: 20px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        button[type="submit"]:hover {
-            background-color: #ff66b3; /* Light Pink */
+        button:hover {
+            background-color: #4562a4;
         }
+        .welcome-message {
+            font-size: 45px;
+            margin-bottom: 30px;
+            color: #5d76cb;
+            position: absolute;
+            top: 80px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+        }
+        /* Rest of your styles */
     </style>
 </head>
 <body>
-    <h1>Welcome to the Patient Login page. </h1>
-    <p>Enter a wacky username to access the secret world of emotions!</p>
-    <form action="/emotion" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="e.g., CaptainEmotion" required>
-        <button type="submit">Unlock the Fun!</button>
-    </form>
+    <div class="welcome-message">
+        <h2>Welcome back, friend! 😊</h2>
+    </div>
+    <div class="login-container">
+        <img src="{{ url_for('static', filename='images/group.png') }}" alt="Emotion Characters" class="login-image">
+        <div class="container">
+            <h1>Login</h1>
+            <form action="/emotion" method="post">
+                <label for="username"></label>Username:</label>
+                <input type="text" id="username" name="username" required>
+                <button type="submit">Login!</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
-
-
-

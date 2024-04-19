@@ -3,61 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Face Emotion Detection</title>
+    <title>Emotion Explorers</title>
     <style>
         body {
-            background-color: #ffcc00; /* Yellow */
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f4fc; /* Soft blue background */
+            color: #333;
             text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1270px; /* Adjusted to match your screenshot */
+            margin: auto;
+            padding: 20px;
         }
         h1 {
-            color: #ff007f; /* Hot Pink */
-            font-size: 36px;
-            margin-bottom: 20px;
+            color: #5d76cb; /* Header color */
+            font-size: 4em; /* Increased font size */
+            margin-bottom: 0.5em;
         }
         p {
-            color: #3399ff; /* Blue */
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: 2em; /* Increased font size for instruction text */
+            margin-bottom: 1em;
         }
-        a {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 24px;
-            background-color: #ff007f; /* Hot Pink */
-            color: #fff; /* White */
-            text-decoration: none;
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2em;
+        }
+        .nav {
+            background-color: #ffcc00; /* Button color */
             border-radius: 20px;
-            margin: 10px;
-            transition: background-color 0.3s ease;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1.5em; /* Increased font size */
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
         }
-        a:hover {
-            background-color: #ff66b3; /* Light Pink */
+        .nav:hover {
+            background-color: #e6b800;
+        }
+        .characters {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .character {
+            margin: 15px;
+            flex: 1;
+            min-width: 120px; /* Ensures images don't get too small */
+        }
+        .character img {
+            width: auto; /* Allows natural image width */
+            height: 180px; /* Fixed height for all character images */
+            margin-bottom: 10px;
+        }
+        .emotion {
+            font-size: 1.25em; /* Slightly larger font size */
+        }
+        footer {
+            padding: 20px;
+            background-color: #5d76cb;
+            color: white;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Crazy Face Emotion Detection!</h1>
-    <p>Get ready for some wild and wacky emotions! Start by performing Webcam Face Detection below.</p>
-    <a href="/picture">Detect Emotion from Image</a>
-    <a href="/video_feed">Start Webcam Face Detection</a>
-    <a href="/username">Analyze Emotion</a>
-    <a href="/about">Learn More About Us</a>
+    <div class="container">
+        <h1>Welcome to Emotion Explorers</h1>
+        <p>Please select an option below to begin exploring emotions.</p>
+        <div class="nav-container">
+            <a class="nav" href="/picture">Detect Emotion from Image</a>
+            <a class="nav" href="/video_feed">Webcam Face Detection</a>
+            <a class="nav" href="/username">Emotion Analysis</a>
+            <a class="nav" href="/about">About Emotion Explorers</a>
+        </div>
+
+        <div class="characters">
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Joy.png') }}" alt="Joy">
+                <div class="emotion">Joy</div>
+            </div>
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Sadness.png') }}" alt="Sadness">
+                <div class="emotion">Sadness</div>
+            </div>
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Disgust.png') }}" alt="Disgust">
+                <div class="emotion">Disgust</div>
+            </div>
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Anger.png') }}" alt="Anger">
+                <div class="emotion">Anger</div>
+            </div>
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Fear.png') }}" alt="Fea">
+                <div class="emotion">Fear</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Get ready for some wild and wacky</p>
+    </footer>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'q') {
+                fetch('/stop_video_feed', { method: 'POST' })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.href = "{{ url_for('index') }}";
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        });
+    </script>
 </body>
-<script>
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'q') {
-            fetch('/stop_video_feed', { method: 'POST' })
-                .then(response => {
-                    if (response.ok) {
-                        window.location.href = "{{ url_for('index') }}";
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        }
-    });
-</script>
 </html>
+
 
 
 

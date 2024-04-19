@@ -3,71 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emotion Result</title>
+    <title>Emotion Result - Emotion Explorers</title>
     <style>
-        /* Set background color based on emotion */
         body {
-            {% if emotion == 'angry' %}
-                background-color: #FF5733; /* Orange-red */
-            {% elif emotion == 'fear' %}
-                background-color: #A020F0; /* purple */
-            {% elif emotion == 'neutral' %}
-                background-color: #D5DBDB; /* Light gray */
-            {% elif emotion == 'sad' %}
-                background-color: #5DADE2; /* Sky blue */
-            {% elif emotion == 'disgust' %}
-                background-color: #58D68D; /* Green */
-            {% elif emotion == 'happy' %}
-                background-color: #F4D03F; /* Yellow */
-            {% elif emotion == 'surprise' %}
-                background-color: orange; /* Orange */
-            {% endif %}
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            transition: background-color 0.5s; /* Smooth transition for background color */
+            background-color: #D5DBDB; /* Default light gray, in case 'emotion' variable isn't set */
         }
 
-        /* Style heading */
+        h1, p, a {
+            color: #fff; /* White text for better contrast */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
+        }
+
         h1 {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            color: #fff; /* White */
-            text-align: center;
+            margin-top: 40px;
+            font-size: 4em; /* Increased size for impact */
+            font-weight: bold;
         }
 
-        /* Style paragraph */
         p {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            color: #fff; /* White */
-            text-align: center;
+            font-size: 1.2em;
+            margin: 20px;
+            max-width: 800px; /* Limiting width for better readability */
         }
 
-        /* Style image */
         img {
-            display: block;
-            margin: 0; /* Remove default margin */
-            margin-right: auto; /* Automatically align the right margin */
-            margin-left: 10%; /* Set the left margin to 10% of the container width */
             border-radius: 50%;
+            width: 250px; /* Slightly bigger image */
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
         }
 
-        /* Style links */
         a {
-            display: block;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            color: #fff; /* White */
-            text-align: center;
-            margin-top: 20px;
-            text-decoration: none;
+            background-color: #5d76cb; /* Consistent button color */
+            padding: 15px 30px; /* Larger padding for a bigger button */
+            border-radius: 30px; /* Fully rounded edges for a pill shape */
+            font-size: 1.5em; /* Larger font for visibility */
+            margin: 15px;
+            text-decoration: none; /* Remove underline */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            transition: transform 0.2s; /* Smooth button press animation */
+        }
+
+        a:hover, a:active {
+            background-color: #43518c; /* Darker color on hover/press */
+            transform: scale(0.98); /* Button press effect */
+        }
+
+        iframe {
+            margin-top: 20px; /* Add some space above the gif */
+            border-radius: 20px; /* Rounded corners for the iframe */
+            overflow: hidden; /* Ensures the corners appear rounded */
         }
     </style>
 </head>
 <body>
+    <!-- Dynamic background color based on the emotion variable -->
+    <script>
+        const emotions = {
+            'angry': '#FF5733',
+            'fear': '#A020F0',
+            'neutral': '#D5DBDB',
+            'sad': '#5DADE2',
+            'disgust': '#58D68D',
+            'happy': '#F4D03F',
+            'surprise': '#F39C12'
+        };
+        
+        // Access the emotion from the server-side variable and apply the background color
+        document.body.style.backgroundColor = emotions[{{ emotion | tojson }}] || '#D5DBDB';
+    </script>
+
     <h1>The emotion is {{ emotion }}</h1>
     <p>Description: {{ description }}</p>
-    <img src="{{image}}" alt="Photo Taken Image" width="200" height="190">
+    <img src="{{image}}" alt="Emotion Image" width="200" height="auto">
     <a href="/picture">Analyze Another Image</a>
     <a href="/">Go Back</a>
-    <iframe src="{{ emoji_url }}" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <iframe src="{{ emoji_url }}" width="480" height="480" allowFullScreen></iframe>
 </body>
 </html>
-
 
 
 
