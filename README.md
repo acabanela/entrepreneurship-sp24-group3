@@ -18,7 +18,7 @@ This project aims to detect and analyze emotions in real-time using a static pho
 
 ## Dependencies
 
-- Python 3.x
+- Python 3.8
 - OpenCV
 - DeepFace
 - Flask
