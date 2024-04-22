@@ -33,7 +33,7 @@ This project aims to detect and analyze emotions in real-time using a webcam fee
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/webcam-emotion-detection.git
+git clone git@github.com:acabanela/entrepreneurship-sp24-group3.git
 ```
 
 2. Install dependencies:
