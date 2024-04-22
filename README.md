@@ -2,9 +2,9 @@
 
 # Webcam Emotion Detection and Analysis
 
-This project aims to detect and analyze emotions in real-time using a webcam feed, with the objective of assisting children with Autism Spectrum Disorders in understanding facial expressions and corresponding emotions. Leveraging the DeepFace library for facial analysis, the system provides visualizations of detected emotions over time.
+This project aims to detect and analyze emotions in real-time using a static photo or webcam feed, with the objective of assisting children with Autism Spectrum Disorders in understanding facial expressions and corresponding emotions. Leveraging the DeepFace library for facial analysis, the system provides visualizations of detected emotions over time.
 
-## Main Functions:
+## Main Functions
 
 - Static Photo Analysis: Upload a static photo to receive detected emotion/facial expression feedback.
 - Real-time Video Analysis: Utilize your webcam for live streaming video analysis and immediate feedback on detected emotions/facial expressions.
@@ -53,10 +53,6 @@ python app.py
 
 2. Access the web interface at `http://127.0.0.1:5000` in your browser.
 
-3. Follow the on-screen instructions to start the webcam feed and analyze emotions.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+3. Follow the on-screen instructions to start uploading photos or the webcam feed and analyze emotions.
 
 ---
