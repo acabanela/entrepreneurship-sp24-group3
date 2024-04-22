@@ -1,12 +1,13 @@
-# entrepreneurship-sp24-group3
-
-Here's a basic README.md template for your project:
-
----
+# Entrepreneurship Spring 2024 Group3
 
 # Webcam Emotion Detection and Analysis
 
-This project aims to detect and analyze emotions in real-time using a webcam feed. It utilizes the DeepFace library for facial analysis and provides visualizations of detected emotions over time.
+This project aims to detect and analyze emotions in real-time using a webcam feed, with the objective of assisting children with Autism Spectrum Disorders in understanding facial expressions and corresponding emotions. Leveraging the DeepFace library for facial analysis, the system provides visualizations of detected emotions over time.
+
+## Main Functions:
+
+- Static Photo Analysis: Upload a static photo to receive detected emotion/facial expression feedback.
+- Real-time Video Analysis: Utilize your webcam for live streaming video analysis and immediate feedback on detected emotions/facial expressions.
 
 ## Features
 
@@ -59,5 +60,3 @@ python app.py
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-You can further customize this template with additional sections or details specific to your project.
