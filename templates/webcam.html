@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
     <title>Webcam Face Detection - Emotion Explorers</title>
+    <!-- Internal CSS Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -64,16 +67,22 @@
     </style>
 </head>
 <body>
+    <!-- Emoji icon -->
     <div class="emoji">📸</div>
+    <!-- Title -->
     <h1>Face Detection</h1>
+    <!-- Form for uploading an image -->
     <form action="/analyze" method="post" enctype="multipart/form-data" id="upload-form">
         <label for="file" class="upload-btn">Upload an Image</label>
         <input type="file" id="file" name="file" accept="image/*">
         <button type="submit" class="analyze-btn hidden">Analyze</button>
         <input type="hidden" id="captured-image" name="captured_image">
     </form>
+    <!-- Button to capture picture from webcam -->
     <button id="capture-btn" class="capture-btn">Capture Picture</button>
+    <!-- Loading text -->
     <p id="loading-text" class="hidden">Analyzing...</p>
+    <!-- Link to go back -->
     <a href="/" class="upload-btn">Go Back</a>
 
     <!-- Add JavaScript for file upload and capture functionality -->

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
     <title>Emotion Explorers</title>
+    <!-- Internal CSS Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -77,42 +80,55 @@
     </style>
 </head>
 <body>
+    <!-- Main content container -->
     <div class="container">
+        <!-- Main heading -->
         <h1>Welcome to Emotion Explorers</h1>
+        <!-- Instruction text -->
         <p>Please select an option below to begin exploring emotions.</p>
+        <!-- Navigation links container -->
         <div class="nav-container">
+            <!-- Navigation links -->
             <a class="nav" href="/picture">Detect Emotion from Image</a>
             <a class="nav" href="/video_feed">Webcam Face Detection</a>
             <a class="nav" href="/username">Emotion Analysis</a>
             <a class="nav" href="/about">About Emotion Explorers</a>
         </div>
 
+        <!-- Character images and emotions container -->
         <div class="characters">
+            <!-- Character 1 -->
             <div class="character">
                 <img src="{{ url_for('static', filename='images/Joy.png') }}" alt="Joy">
                 <div class="emotion">Joy</div>
             </div>
+            <!-- Character 2 -->
             <div class="character">
                 <img src="{{ url_for('static', filename='images/Sadness.png') }}" alt="Sadness">
                 <div class="emotion">Sadness</div>
             </div>
+            <!-- Character 3 -->
             <div class="character">
                 <img src="{{ url_for('static', filename='images/Disgust.png') }}" alt="Disgust">
                 <div class="emotion">Disgust</div>
             </div>
+            <!-- Character 4 -->
             <div class="character">
                 <img src="{{ url_for('static', filename='images/Anger.png') }}" alt="Anger">
                 <div class="emotion">Anger</div>
             </div>
+            <!-- Character 5 -->
             <div class="character">
                 <img src="{{ url_for('static', filename='images/Fear.png') }}" alt="Fea">
                 <div class="emotion">Fear</div>
             </div>
         </div>
     </div>
+    <!-- Footer -->
     <footer>
         <p>Get ready for some wild and wacky</p>
     </footer>
+    <!-- JavaScript code to handle key events -->
     <script>
         document.addEventListener('keydown', function(event) {
             if (event.key === 'q') {

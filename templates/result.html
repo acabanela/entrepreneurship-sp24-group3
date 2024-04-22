@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
     <title>Emotion Result - Emotion Explorers</title>
+    <!-- Internal CSS Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -82,11 +85,17 @@
         document.body.style.backgroundColor = emotions[{{ emotion | tojson }}] || '#D5DBDB';
     </script>
 
+    <!-- Heading displaying the detected emotion -->
     <h1>The emotion is {{ emotion }}</h1>
+    <!-- Paragraph displaying the description of the detected emotion -->
     <p>Description: {{ description }}</p>
+    <!-- Image displaying the detected emotion -->
     <img src="{{image}}" alt="Emotion Image" width="200" height="auto">
+    <!-- Button to analyze another image -->
     <a href="/picture">Analyze Another Image</a>
+    <!-- Button to go back to the main page -->
     <a href="/">Go Back</a>
+    <!-- iframe displaying an emoji or gif based on the detected emotion -->
     <iframe src="{{ emoji_url }}" width="480" height="480" allowFullScreen></iframe>
 </body>
 </html>

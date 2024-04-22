@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
     <title>Login - Emotion Explorers</title>
+    <!-- Internal CSS Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -72,12 +75,18 @@
     </style>
 </head>
 <body>
+    <!-- Login image -->
     <img src="{{ url_for('static', filename='images/JOY_Render.webp') }}" alt="Joy" class="login-image">
+    <!-- Login container -->
     <div class="container">
+        <!-- Login heading -->
         <h1>Login</h1>
+        <!-- Login form -->
         <form action="/video" method="post">
+            <!-- Username input -->
             <label for="username">Patient Username:</label>
             <input type="text" id="username" name="username" required>
+            <!-- Login button -->
             <button type="submit">Login</button>
         </form>
     </div>

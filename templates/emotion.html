@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
     <title>Emotion Analysis</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+    <!-- Plotly JavaScript library -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+     <!-- Internal CSS Styles -->
     <style>
         body {
             background-color: #ffcc00; /* Yellow */
@@ -41,22 +46,31 @@
     </style>
 </head>
 <body>
+    <!-- Main heading -->
     <h1>Welcome to the Emotion Analysis Results</h1>
     
+    <!-- Heading for Emotion Descriptions -->
     <h2>Emotion Descriptions:</h2>
+    <!-- Unordered list to display emotion descriptions -->
     <ul>
         {% for emotion, description in descriptions.items() %}
             <li><strong>{{ emotion }}:</strong> {{ description }}</li>
         {% endfor %}
     </ul>
     
+    <!-- Heading for Bar Plot of Emotion Counts -->
     <h2>Bar Plot of Emotion Counts:</h2>
+    <!-- Container for the bar plot -->
     <div class="plot">
+        <!-- Bar plot HTML div element -->
         {{ bar_plot_div | safe }}
     </div>
 
+    <!-- Heading for Time Series Plot on Emotion -->
     <h2>Time Series Plot on Emotion:</h2>
+    <!-- Container for the time series plot -->
     <div class="plot">
+        <!-- Time series plot HTML div element -->
         {{ time_series_plot_div | safe }}
     </div>
 </body>

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
     <title>Login - Emotion Explorers</title>
+    <!-- Internal CSS Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -67,13 +70,19 @@
     </style>
 </head>
 <body>
+    <!-- Welcome message -->
     <div class="welcome-message">
         <h2>Welcome back, friend! 😊</h2>
     </div>
+    <!-- Login container with image and form -->
     <div class="login-container">
+        <!-- Login image -->
         <img src="{{ url_for('static', filename='images/group.png') }}" alt="Emotion Characters" class="login-image">
+        <!-- Login form container -->
         <div class="container">
+            <!-- Login heading -->
             <h1>Login</h1>
+            <!-- Login form -->
             <form action="/emotion" method="post">
                 <label for="username"></label>Username:</label>
                 <input type="text" id="username" name="username" required>
