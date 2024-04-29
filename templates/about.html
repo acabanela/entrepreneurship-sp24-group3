@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Emotion Explorers</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-size: 16px; /* Base font size */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2em auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h3 {
+            color: #5d76cb;
+            font-size: 1.5em; /* Larger font size */
+        }
+
+        .container p {
+            margin-bottom: 2em;
+            font-size: 1.5em; /* Consistent increased font size for all paragraphs */
+        }
+
+        .team-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .team-member {
+            width: 200px;
+            text-align: center;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 100%;
+            height: auto;
+        }
+
+        .team-member h2 {
+            font-size: 1.8em; /* Slightly larger for visibility */
+        }
+
+        .team-member p {
+            font-size: 1.2em; /* Slightly smaller than other paragraphs if desired */
+        }
+
+        @media (max-width: 768px) {
+            .team-row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .link-demo {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #5d76cb;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.3em; /* Increased font size */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <div class="intro">
+            <p>Welcome to Emotion Explorers! We are a startup emerging from the MSDS 603 Data Entrepreneurship course, committed to developing innovative solutions for individuals with neurodevelopmental disorders (NDDs). Our focus is on harnessing cutting-edge technology to enhance emotional intelligence and social interaction capabilities.</p>
+        </div>
+        <h3>Mission and Vision</h3>
+        <p>Our mission is to provide accessible and effective tools that enhance emotion recognition for people with NDDs. We envision a world where these individuals can engage in social interactions more confidently and independently.</p>
+        <h3>Our Technology</h3>
+        <p>Our platform leverages advanced computer vision and artificial intelligence to analyze facial expressions and provide interactive feedback. This enables users to improve their emotion recognition skills in a user-friendly environment, making use of real-time data processing and customized feedback loops.</p>
+        <h3>Meet Our Team</h3>
+        <div class="team-row">
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/amadeo.png') }}" alt="Amadeo">
+                <h2>Amadeo Cabanela</h2>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/david.png') }}" alt="David">
+                <h2>David Ramirez</h2>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/frank.png') }}" alt="Frank">
+                <h2>Krit Poshakrishna</h2>
+            </div>
+        </div>
+        <div class="team-row">
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/yi_fang.png') }}" alt="Yi Fang">
+                <h2>Yi Fang Tsai</h2>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/ronel.png') }}" alt="Ronel">
+                <h2>Ronel Solomon</h2>
+            </div>
+        </div>
+        <h3>Explore Our Demo</h3>
+        <p>Discover how our platform can transform the learning experience for people with NDDs. Try our interactive demo today:</p>
+        <a href="https://example.com/demo" class="link-demo">View Demo</a>
+        <h3>Our Commitment</h3>
+        <p>We commit to continuous innovation and empathy-driven design to provide scalable solutions that not only meet the current needs but also anticipate future challenges in emotion recognition training.</p>
+    </div>
+</body>
+</html>
