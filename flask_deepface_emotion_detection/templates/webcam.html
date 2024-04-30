@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
+    <title>Emotion Explorers</title>
+    <!-- Internal CSS Styles -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f4fc; /* Soft blue background */
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1270px; /* Adjusted to match your screenshot */
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #5d76cb; /* Header color */
+            font-size: 4em; /* Increased font size */
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        .section-header {
+            color: #5d76cb; /* Header color */
+            font-size: 3.5em; /* Increased font size */
+            font-weight: bold;
+        }
+        .white-container {
+            display: flex;
+            max-width: 1100px;
+            margin: 2em auto;
+            padding: 20px; /* Adjusted padding */
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            justify-content: space-between; /* Spacing between columns */
+        }
+        .video-container {
+            flex: 1; /* Occupy remaining space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .loading-message {
+            font-size: 1.5em;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+        .hand-point {
+            font-size: 2.5em;
+        }
+        #video {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+        }
+        .loading-container {
+            min-height: 300px;
+            flex: 1;  /*Occupy remaining space */
+            padding-top: 30px;
+            margin: 0 30px 0 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Space between rows */
+            align-items: center;
+            background: #e5e5e5;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .info-container {
+            flex: 1; /* Occupy remaining space */
+            padding-top: 30px;
+            margin: 0 30px 0 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Space between rows */
+            align-items: center;
+            background: #e5e5e5;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        #loadingMessage {
+            /* display: none; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #canvas {
+            /* max-width: 100%;
+            max-height: 100%; */
+            width: 60%;
+            height: 60%;
+        }
+        #emojiImg {
+            max-width: 100px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            height: 55px; /* Height of the navbar */
+            width: 100%;
+            background-color: #8399e3; /* Color for the navigation bar */
+            z-index: 1000; /* Ensure it's above other content */
+            display: flex;
+            justify-content: space-around; /* Distribute tabs evenly */
+        }
+        .navbar a {
+            color: white; /* Text color for navigation links */
+            text-decoration: none;
+            padding: 0 5% 0 5%; /* Adjust padding to zero */
+            font-size: 1.2em; /* Adjust font size as needed */
+            transition: background-color 0.3s; /* Smooth transition */
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            height: 100%; /* Ensure anchor elements span the whole height */
+        }
+        .navbar a:hover {
+            background-color: #344374; /* Color on hover */
+        }
+        .active {
+            background-color: #475b9c; /* Color for selected page */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <!-- Navigation links -->
+        <a href="/">Home</a>
+        <a href="/webcam" class="active">Webcam Demo 📸</a>
+        <a href="/learning_center">Learning Center</a>
+        <a href="/about">About</a>
+    </div>
+    <!-- Main content container -->
+    <div class="container">
+        <!-- Main heading -->
+        <h1></h1>
+
+        <!-- White Container -->
+        <div class="white-container">
+            <!-- Left column: Video -->
+            <div class="video-container">
+                <video id="video" autoplay></video>
+            </div>
+            <!-- Right column: Canvas, Emoji Image, Emotion Label -->
+            <div class="loading-container" id="loadingContainer">
+                <!-- Loading message -->
+                <div class="loading-message" id="loadingMessage">
+                    <p><span class="hand-point">👈</span></p>
+                    <p>Make a facial expression and hold it for a few seconds!</p>
+                </div>
+            </div>
+            <div class="info-container" id="infoContainer" style="display: none;">
+                <!-- First row: Canvas -->
+                <canvas id="canvas"></canvas>
+                <!-- Second row: Emoji Image -->
+                <img id="emojiImg" src="" alt="Emoji">
+                <!-- Third row: Emotion Label -->
+                <div id="emotionLabel">Emotion: </div>
+            </div>
+        </div>
+    </div>
+    <!-- Include the script.js file -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Show loading message for 15 seconds
+        setTimeout(() => {
+            document.getElementById('loadingContainer').style.display = 'none';
+            document.getElementById('infoContainer').style.display = 'flex';
+        }, 12000);
+    </script>
+</body>
+</html>

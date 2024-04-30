@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
+    <title>Emotion Explorers</title>
+    <!-- Internal CSS Styles -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f4fc; /* Soft blue background */
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1270px; /* Adjusted to match your screenshot */
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #5d76cb; /* Header color */
+            font-size: 4em; /* Increased font size */
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        .section-header {
+            color: #5d76cb; /* Header color */
+            font-size: 3.5em; /* Increased font size */
+            font-weight: bold;
+            margin-bottom: 2em;
+        }
+        .mission-text {
+            color: #636776;
+            font-size: 1.4em;
+            /* font-style: italic; */
+            line-height: 1.35;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        .mission-text-emphasize {
+            color: #5d76cb; /* Header color */
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        .about-welcome-text {
+            color: #636776;
+            font-size: 1.4em;
+            line-height: 1.35;
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+        .section-container {
+            max-width: 1100px;
+            margin: 2em auto;
+            padding: 100px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .team-row {
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+            margin-bottom: 30px;
+        }
+        .team-member {
+            width: 200px;
+            text-align: center;
+        }
+        .team-member img {
+            border-radius: 50%;
+            width: 100%;
+            height: auto;
+        }
+        .team-member h2 {
+            margin: 0.5em 0 0;
+            font-size: 1.2em;
+        }
+        .team-member p {
+            font-size: 0.9em;
+            margin: 0.5em 0 0;
+        }
+        @media (max-width: 768px) {
+            .team-row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            height: 55px; /* Height of the navbar */
+            width: 100%;
+            background-color: #8399e3; /* Color for the navigation bar */
+            z-index: 1000; /* Ensure it's above other content */
+            display: flex;
+            justify-content: space-around; /* Distribute tabs evenly */
+        }
+        .navbar a {
+            color: white; /* Text color for navigation links */
+            text-decoration: none;
+            padding: 0 5% 0 5%; /* Adjust padding to zero */
+            font-size: 1.2em; /* Adjust font size as needed */
+            transition: background-color 0.3s; /* Smooth transition */
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            height: 100%; /* Ensure anchor elements span the whole height */
+        }
+        .navbar a:hover {
+            background-color: #344374; /* Color on hover */
+        }
+        .active {
+            background-color: #475b9c; /* Color for selected page */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <!-- Navigation links -->
+        <a href="/">Home</a>
+        <a href="/webcam">Webcam Demo 📸</a>
+        <a href="/learning_center">Learning Center</a>
+        <a href="/about" class="active">About</a>
+    </div>
+    <!-- Main content container -->
+    <div class="container">
+        <!-- Main heading -->
+        <h1>About Us</h1>
+        <div class="section-container">
+            <p class="about-welcome-text">
+                Welcome to Emotion Explorers! We are a startup emerging from the MSDS 603 Data Entrepreneurship course, committed to developing innovative solutions for individuals with neurodevelopmental disorders (NDDs). Our focus is on harnessing cutting-edge technology to enhance emotional intelligence and social interaction capabilities.
+            </p>
+        </div>
+
+        <!-- Mission Container -->
+        <div class="section-container">
+            <span class="section-header">Our Mission and Vision</span>
+            <br/>
+            <p class="mission-text">At Emotion Explorers, our mission is to leverage Computer Vision AI to <span class="mission-text-emphasize">empower</span> and <span class="mission-text-emphasize">enable</span> individuals with neurodevelopmental disorders (NDDs) to better understand emotions and facial expressions, creating a fun environment for social connection, confidence, and belonging.
+            </p>
+            <br/>
+            <p class="mission-text">
+                We aim to provide accessible and effective tools that enhance emotion recognition for people with NDDs. We envision a world where these individuals can engage in social interactions more confidently and independently.
+            </p>
+        </div>
+
+        <!-- Our Technology Container -->
+        <div class="section-container">
+            <span class="section-header">Our Technology</span>
+            <p class="mission-text">
+                Our platform leverages advanced computer vision and artificial intelligence to analyze facial expressions and provide interactive feedback. This enables users to improve their emotion recognition skills in a user-friendly environment, making use of real-time data processing and customized feedback loops.
+            </p>
+        </div>
+
+        <!-- Our Commitment Container -->
+        <div class="section-container">
+            <span class="section-header">Our Commitment</span>
+            <p class="mission-text">
+                We commit to continuous innovation and empathy-driven design to provide scalable solutions that not only meet the current needs but also anticipate future challenges in emotion recognition training.
+            </p>
+        </div>
+
+        <!-- Our Team Container -->
+        <div class="section-container">
+            <span class="section-header">Our Team</span>
+            <p class="mission-text">Meet our team of passionate individuals!</p>
+            <br/>
+            <!-- Team Members Section -->
+            <div class="team-row">
+                <!-- Individual Team Member -->
+                <div class="team-member">
+                    <!-- Team Member's Image -->
+                    <img src="{{ url_for('static', filename='images/Amadeo.png') }}" alt="Amadeo">
+                    <!-- Team Member's Name -->
+                    <h2>Amadeo Cabanela</h2>
+                    <p>acabanela@dons.usfca.edu</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='images/Ronel.png') }}" alt="Ronel">
+                    <h2>Ronel Solomon</h2>
+                    <p>rsolomon1@dons.usfca.edu</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='images/Frank.png') }}" alt="Frank">
+                    <h2>Krit Poshakrishna</h2>
+                    <p>kposhakrishna@dons.usfca.edu</p>
+                </div>
+            </div>
+            <div class="team-row">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='images/Yi_fang.png') }}" alt="Yi Fang">
+                    <h2>Yi Fang Tsai</h2>
+                    <p>ytsai27@dons.usfca.edu</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='images/David.png') }}" alt="David">
+                    <h2>David Ramirez</h2>
+                    <p>dramirez18@dons.usfca.edu</p>
+                </div>
+            </div>
+        </div>
+        <!-- Special Thanks Container -->
+        <div class="section-container">
+            <span class="section-header">Special Thanks</span>
+            <p class="mission-text">
+                We would like to give special thanks to Professor Uri Schonfeld for his invaluable guidance and enthusiasm to
+                help make our project better. We would also like to thank the domain experts and individuals with NDDs for allowing us
+                to interview them and for their helpful insight which allowed us to build a more effective product.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

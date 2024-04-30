@@ -1,18 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-time Emotion Detection</title>
+    <!-- Title of the page -->
+    <title>Emotion Explorers</title>
+    <!-- Internal CSS Styles -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f4fc; /* Soft blue background */
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1270px; /* Adjusted to match your screenshot */
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #5d76cb; /* Header color */
+            font-size: 4em; /* Increased font size */
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+        }
+        .section-header {
+            color: #5d76cb; /* Header color */
+            font-size: 3.5em; /* Increased font size */
+            font-weight: bold;
+        }
+        .instruction {
+            font-size: 1.5em; /* Increased font size for instruction text */
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+        }
+        .mission-text {
+            color: #636776;
+            font-size: 1.4em; /* Increased font size for instruction text */
+            line-height: 1.35;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        .mission-text-emphasize {
+            color: #5d76cb; /* Header color */
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        .demo-button-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2em;
+        }
+        .demo-button {
+            height: 30px;
+            background-color: #ffcc00; /* Button color */
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 35px;
+            font-size: 1.5em; /* Increased font size */
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .demo-button:hover {
+            background-color: #e6b800;
+        }
+        .characters {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .character {
+            margin: 15px;
+            flex: 1;
+            min-width: 120px; /* Ensures images don't get too small */
+        }
+        .character img {
+            width: auto; /* Allows natural image width */
+            height: 180px; /* Fixed height for all character images */
+            margin-bottom: 10px;
+        }
+        .emotion {
+            font-size: 1.25em; /* Slightly larger font size */
+        }
+        footer {
+            padding: 20px;
+            background-color: #8399e3;
+            color: white;
+            width: 100%;
+            position: fixed;
+            height: 35px;
+            bottom: 0;
+            left: 0;
+        }
+        .section-container {
+            max-width: 1100px;
+            margin: 2em auto;
+            padding: 100px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .team-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .team-member {
+            width: 200px;
+            text-align: center;
+        }
+        .team-member img {
+            border-radius: 50%;
+            width: 100%;
+            height: auto;
+        }
+        .team-member h2 {
+            margin: 0.5em 0 0;
+            font-size: 1.2em;
+        }
+        .team-member p {
+            font-size: 0.9em;
+            margin: 0.5em 0 0;
+        }
+        @media (max-width: 768px) {
+            .team-row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            height: 55px; /* Height of the navbar */
+            width: 100%;
+            background-color: #8399e3; /* Color for the navigation bar */
+            z-index: 1000; /* Ensure it's above other content */
+            display: flex;
+            justify-content: space-around; /* Distribute tabs evenly */
+        }
+        .navbar a {
+            color: white; /* Text color for navigation links */
+            text-decoration: none;
+            padding: 0 5% 0 5%; /* Adjust padding to zero */
+            font-size: 1.2em; /* Adjust font size as needed */
+            transition: background-color 0.3s; /* Smooth transition */
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            height: 100%; /* Ensure anchor elements span the whole height */
+        }
+        .navbar a:hover {
+            background-color: #344374; /* Color on hover */
+        }
+        .active {
+            background-color: #475b9c; /* Color for selected page */
+        }
+    </style>
 </head>
 <body>
-    <h1>Real-time Emotion Detection</h1>
-    <div id="videoContainer">
-        <video id="video" width="640" height="480" autoplay></video>
-        <canvas id="canvas" width="640" height="480"></canvas>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <!-- Navigation links -->
+        <a href="/" class="active">Home</a>
+        <a href="/webcam">Webcam Demo 📸</a>
+        <a href="/learning_center">Learning Center</a>
+        <a href="/about">About</a>
     </div>
-    <div id="emotionLabel">Emotion: </div>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- Main content container -->
+    <div class="container">
+        <!-- Main heading -->
+        <h1>Welcome to Emotion Explorers</h1>
+        <!-- Instruction text -->
+        <div class="instruction">How do you feel today? Click below to try the webcam demo!</div>
+        <!-- Demo Button Container -->
+        <div class="demo-button-container">
+            <a class="demo-button" href="/webcam">Try the Demo</a>
+        </div>
+
+        <!-- Character images and emotions container -->
+        <div class="characters">
+            <!-- Character 1 -->
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Joy.png') }}" alt="Joy">
+                <div class="emotion">Joy</div>
+            </div>
+            <!-- Character 2 -->
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Sadness.png') }}" alt="Sadness">
+                <div class="emotion">Sadness</div>
+            </div>
+            <!-- Character 3 -->
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Disgust.png') }}" alt="Disgust">
+                <div class="emotion">Disgust</div>
+            </div>
+            <!-- Character 4 -->
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Anger.png') }}" alt="Anger">
+                <div class="emotion">Anger</div>
+            </div>
+            <!-- Character 5 -->
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/Fear.png') }}" alt="Fea">
+                <div class="emotion">Fear</div>
+            </div>
+        </div>
+        <!-- Mission Container -->
+        <!-- <div class="section-container">
+            <div class="section-header">Our Mission</div>
+            <br/>
+            <div>
+                <p class="mission-text">At Emotion Explorers, our mission is to leverage Computer Vision AI to <span class="mission-text-emphasize">empower</span> and <span class="mission-text-emphasize">enable</span> individuals with neurodevelopmental disorders to better understand emotions and facial expressions, creating a fun environment for social connection, confidence, and belonging.
+                </p>
+            </div>
+        </div> -->
+    </div>
+    <!-- Footer -->
+    <!-- <footer>
+        <p>Get ready for some wild and wacky</p>
+    </footer> -->
 </body>
 </html>
