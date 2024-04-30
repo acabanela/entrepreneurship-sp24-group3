@@ -16,6 +16,14 @@ This project aims to detect and analyze emotions in real-time using a static pho
 - Analysis of detected emotions over time with visualizations
 - Web interface for interacting with the application
 
+  ## Model
+  VGG-Face model
+
+  ## Training
+  For the DeepFace library used in the application, the default trained models are based on the VGG-Face model. These models are trained on the VGG-Face dataset, which consists of millions of facial images across thousands of identities. The VGG-Face model is known for its high accuracy in facial recognition and attribute detection tasks. 
+## Dataset
+The model uses the FER2013 dataset, which contains facial images labeled with seven different emotions: anger, disgust, fear, happiness, sadness, surprise, and neutral.
+
 ## Dependencies
 
 - Python 3.8
