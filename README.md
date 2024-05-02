@@ -69,3 +69,13 @@ python app.py
 3. Follow the on-screen instructions to start uploading photos or the webcam feed and analyze emotions.
 
 ---
+
+## Presentation
+
+https://docs.google.com/presentation/d/1l0v2NiwyiMS2kQYsnkR0aFSNsHkqYDbBTcGjn1lnY2g/edit?usp=sharing
+
+## App Docker link to our website: 
+
+https://face-app-scenario-web-service-bg44mx37ca-wn.a.run.app/
+
+https://face-app-web-service-bg44mx37ca-wn.a.run.app
