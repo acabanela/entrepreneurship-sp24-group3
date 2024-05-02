@@ -1,4 +1,4 @@
-# Entrepreneurship Spring 2024 Group3
+# Entrepreneurship Spring 2024 Group 3
 
 # Webcam Emotion Detection and Analysis
 
@@ -7,7 +7,9 @@ This project aims to detect and analyze emotions in real-time using a static pho
 ## Main Functions
 
 - Static Photo Analysis: Upload a static photo to receive detected emotion/facial expression feedback.
-- Real-time Video Analysis: Utilize your webcam for live streaming video analysis and immediate feedback on detected emotions/facial expressions.
+- Real-time Video Analysis/ Face Explorer: Utilize your webcam for live-streaming video analysis and immediate feedback on detected emotions/facial expressions.
+- Learning Center: A description of all the emotions.
+- Scenario Explorer: Answering the question based on emotion for each scenario.
 
 ## Features
 
@@ -26,7 +28,7 @@ This project aims to detect and analyze emotions in real-time using a static pho
 
   ## Training
   For the DeepFace library used in the application, the default trained models are based on the VGG-Face model. These models are trained on the VGG-Face dataset, which consists of millions of facial images across thousands of identities. The VGG-Face model is known for its high accuracy in facial recognition and attribute detection tasks. 
-## Dataset
+## Dataset (Data)
 The model uses the FER2013 dataset, which contains facial images labeled with seven different emotions: anger, disgust, fear, happiness, sadness, surprise, and neutral.
 
 ## Dependencies
@@ -74,7 +76,9 @@ python app.py
 
 https://docs.google.com/presentation/d/1l0v2NiwyiMS2kQYsnkR0aFSNsHkqYDbBTcGjn1lnY2g/edit?usp=sharing
 
+
 ## App Docker link to our website: 
+We leverage the benefits of containerization with docker which allows portability, speed, flexibility, and scalability
 
 https://face-app-scenario-web-service-bg44mx37ca-wn.a.run.app/
 
