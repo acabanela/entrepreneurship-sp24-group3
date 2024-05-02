@@ -16,6 +16,11 @@ This project aims to detect and analyze emotions in real-time using a static pho
 - Analysis of detected emotions over time with visualizations
 - Web interface for interacting with the application
 
+## Technology
+
+<img width="458" alt="image" src="https://github.com/acabanela/entrepreneurship-sp24-group3/assets/138199384/d30a0203-21d3-4c96-ba28-f90ca146bbe4">
+
+
   ## Model
   VGG-Face model
 
