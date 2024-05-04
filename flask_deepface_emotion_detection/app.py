@@ -34,6 +34,13 @@ def webcam():
     """
     return render_template('webcam.html')
 
+@app.route('/webcam_scenario')
+def webcam_scenario():
+    """
+    Webcam Scenario page for real-time emotion detection from facial epxressions with scenarios.
+    """
+    return render_template('webcam_scenario.html')
+
 @app.route('/analyze', methods=['POST'])
 def analyze():
     data = request.get_json()

@@ -1,0 +1,112 @@
+[
+    {
+        "Scenario Name": "Graduation Success",
+        "Story": "After years of hard work, Tom dons his cap and gown to receive his diploma. Surrounded by friends and family, he feels a wave of pride and accomplishment wash over him as he reflects on his academic journey. What facial expression would Tom make?",
+        "Emotion": "happy"
+    },
+    {
+        "Scenario Name": "Surprise Celebrity Encounter",
+        "Story": "Sarah bumps into her favorite celebrity, Tom Hanks, while walking on Santa Monica Boulevard. She stands starstruck, unable to form words. What facial expression would Sarah make?",
+        "Emotion": "surprise"
+    },
+    {
+        "Scenario Name": "Family Reunion",
+        "Story": "After years apart, Jerry's extended family gathers for a reunion. As they laugh, share stories, and enjoy a delicious meal together, Jerry feels immense joy and gratitude for the love and connection they share. What facial expression would Jerry make?",
+        "Emotion": "happy"
+    },
+    {
+        "Scenario Name": "Wedding Day Bliss",
+        "Story": "Sarah walks down the aisle to meet her partner, Tom. Surrounded by loved ones, they exchange vows and share their first kiss as a married couple. They feel pure satisfaction and excitement as they begin their life together. What facial expression would Sarah and Tom make?",
+        "Emotion": "happy"
+    },
+    {
+        "Scenario Name": "Parking Spot Taken",
+        "Story": "David returns to his car to find someone parked too close, making it impossible to open the door. He clenches his fists in frustration. What facial expression would David make?",
+        "Emotion": "angry"
+    },
+    {
+        "Scenario Name": "Dream Job Offer",
+        "Story": "Tom receives a job offer from his dream company. Excitedly accepting, he feels a rush of fulfillment and relief, knowing that his hard work and perseverance have paid off in achieving his career goals. What facial expression would Tom make?",
+        "Emotion": "happy"
+    },
+    {
+        "Scenario Name": "Haunted House Visit",
+        "Story": "David enters a haunted house attraction. With eerie sounds and actors in costumes jumping out, he trembles. What facial expression would David make?",
+        "Emotion": "fear"
+    },
+    {
+        "Scenario Name": "Lottery Win",
+        "Story": "Michael checks his lottery ticket and realizes he's won the jackpot. His jaw drops as he stares at the numbers. What facial expression would Michael make?",
+        "Emotion": "surprise"
+    },
+    {
+        "Scenario Name": "Sudden Promotion",
+        "Story": "Olivia's boss calls her into the office and announces she's been promoted. Olivia's mouth falls open in shock. What facial expression would Olivia make?",
+        "Emotion": "surprise"
+    },
+    {
+        "Scenario Name": "Lost Wallet",
+        "Story": "Jack realizes he left his wallet at a restaurant, with all his cash and cards inside. He curses under his breath in frustration. What facial expression would Jack make?",
+        "Emotion": "angry"
+    },
+    {
+        "Scenario Name": "Disrespectful Behavior",
+        "Story": "Michael witnesses someone being rude to an elderly person on the bus. He fumes silently. What facial expression would Michael make?",
+        "Emotion": "angry"
+    },
+    {
+        "Scenario Name": "Failed Exam",
+        "Story": "Mary receives her exam results and realizes she failed despite studying hard. She buries her face in her hands, feeling defeated. What facial expression would Mary make?",
+        "Emotion": "sad"
+    },
+    {
+        "Scenario Name": "Rejection Letter",
+        "Story": "Jim receives a rejection letter from his dream job. He stares at it blankly, feeling crushed. What facial expression would Jim make?",
+        "Emotion": "Sad"
+    },
+    {
+        "Scenario Name": "Missing Home",
+        "Story": "Max moves to a new city for a school and feels homesick. He sits in his empty apartment, longing for familiar faces. What facial expression would Max make?",
+        "Emotion": "sad"
+    },
+    {
+        "Scenario Name": "Morning Routine",
+        "Story": "David wakes up, brushes his teeth, and makes breakfast. He moves through the motions without any strong emotions. What facial expression would David make?",
+        "Emotion": "neutral"
+    },
+    {
+        "Scenario Name": "Grocery Shopping",
+        "Story": "Sarah walks through the aisles, picking up items on her shopping list. She moves efficiently, showing no particular emotion. What facial expression would Sarah make?",
+        "Emotion": "neutral"
+    },
+    {
+        "Scenario Name": "Sitting in a Waiting Room",
+        "Story": "Ethan sits in the doctor's office, flipping through a magazine. He waits calmly and silently. What facial expression would Ethan make?",
+        "Emotion": "neutral"
+    },
+    {
+        "Scenario Name": "Public Speaking",
+        "Story": "Lily steps onto the stage to give a presentation. Butterflies fill her stomach, and she feels terrified as she faces the crowd. What facial expression would Lily make?",
+        "Emotion": "fear"
+    },
+    {
+        "Scenario Name": "Terrified of Heights",
+        "Story": "Olivia looks down from a tall building and feels dizzy. Vertigo overwhelms her as she clings to the railing. What facial expression would Olivia make?",
+        "Emotion": "fear"
+    },
+    {
+        "Scenario Name": "Spoiled Milk",
+        "Story": "Olivia takes a sip of milk and tastes it's spoiled. She spits it out, feeling nauseated. What facial expression would Olivia make?",
+        "Emotion": "disgust"
+    },
+    {
+        "Scenario Name": "Stepping in Dog Droppings",
+        "Story": "John accidentally steps in dog poop while walking in the park. Frustration washes over him as he tries to clean his shoe. What facial expression would John make?",
+        "Emotion": "disgust"
+    },
+    {
+        "Scenario Name": "Hair in Food",
+        "Story": "Bob finds a hair in his food at a restaurant. He pushes the plate away, losing his appetite. What facial expression would Bob make?",
+        "Emotion": "disgust"
+    }
+]
