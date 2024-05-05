@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const video = document.getElementById('video');
     const submitButton = document.getElementById('submitButton');
-    const nextButton = document.getElementById('nextButton'); // New: Get the "Next Scenario" button
+    const nextButton = document.getElementById('nextButton');
     const emotionLabel = document.getElementById('emotionLabel');
     const emojiImg = document.getElementById('emojiImg');
     const capturedCanvas = document.getElementById('capturedCanvas');
     const ctx = capturedCanvas.getContext('2d');
     const scenarioText = document.getElementById('scenarioText');
-    const messageDiv = document.getElementById('messageDiv'); // Get reference to the messageDiv
+    const messageDiv = document.getElementById('messageDiv');
 
     let scenarioIndex = 0;
 
@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const scenarioEmotion = scenarios[scenarioIndex]['Emotion'];
                 if (dominant_emotion === scenarioEmotion) {
                     messageDiv.textContent = 'Correct!';
-                    messageDiv.className = 'message-correct'; // Add correct message class
+                    messageDiv.className = 'message-correct';
                 } else {
                     messageDiv.textContent = 'Nope, incorrect!';
-                    messageDiv.className = 'message-incorrect'; // Add incorrect message class
+                    messageDiv.className = 'message-incorrect';
                 }
 
                 submitButton.textContent = 'Try Again';
@@ -110,7 +110,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Increment scenarioIndex to load the next scenario text
         scenarioIndex = (scenarioIndex + 1) % scenarios.length;
         loadScenarioText();
-        // await resetWebcam(); // Call resetWebcam() here to reset the webcam feed
         // Show webcam feed
         submitButton.textContent = 'Submit';
         video.style.display = 'block';
@@ -120,6 +119,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Hide the still capture canvas
         capturedCanvas.style.display = 'none';
         messageDiv.textContent = '';
-        messageDiv.className = ''; // Remove message class
+        messageDiv.className = '';
     });
 });
