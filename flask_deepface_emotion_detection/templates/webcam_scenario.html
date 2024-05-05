@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Explorers</title>
+    <!-- Internal CSS Styles -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f4fc; /* Soft blue background */
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1270px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #5d76cb; /* Header color */
+            font-size: 4em; /* Increased font size */
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        .section-header {
+            color: #5d76cb; /* Header color */
+            font-size: 3.5em; /* Increased font size */
+            font-weight: bold;
+        }
+        .white-container {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            max-width: 1100px;
+            margin: 2em auto;
+            padding: 20px; /* Adjusted padding */
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            justify-content: space-between; /* Spacing between columns */
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Positioning context for absolute positioning */
+        }
+        #video {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            position: relative;
+        }
+        #capturedCanvas {
+            display: none;
+        }
+        #emojiImg {
+            display: none;
+            max-width: 100px;
+        }
+        #emotionLabel {
+            display: none;
+        }
+        #messageDiv {
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+            padding: 10px; /* Add padding for better readability */
+            border-radius: 7px;
+            font-weight: bold; /* Make text bold */
+            font-size: 1.4em;
+            width: 200px;
+        }
+        .message-box{
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+        }
+        .message-correct {
+            background-color: #d4edda; /* Light green background */
+            color: #155724; /* Green text color */
+        }
+        .message-incorrect {
+            background-color: #f8d7da; /* Light red background */
+            color: #721c24; /* Red text color */
+        }
+        .mission-text {
+            color: #636776;
+            font-size: 1.4em;
+            /* font-style: italic; */
+            line-height: 1.35;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        .mission-text-emphasize {
+            color: #5d76cb; /* Header color */
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        .scenario-box {
+            margin-top: 30px;
+            margin-left: 85px;
+            margin-right: 85px;
+        }
+        .button-box {
+            font-size: 1.3em;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        #submitButton,
+        #nextButton {
+            background-color: #5d76cb; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Remove button border */
+            border-radius: 10px;
+            padding: 10px 20px; /* Add padding to the button */
+            font-size: 1em; /* Button font size */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition on hover */
+        }
+        #submitButton:hover,
+        #nextButton:hover {
+            background-color: #475b9c; /* Darker background color on hover */
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            height: 55px; /* Height of the navbar */
+            width: 100%;
+            background-color: #8399e3; /* Color for the navigation bar */
+            z-index: 1000; /* Ensure it's above other content */
+            display: flex;
+            justify-content: space-around; /* Distribute tabs evenly */
+        }
+        .navbar a {
+            color: white; /* Text color for navigation links */
+            text-decoration: none;
+            padding: 0 5% 0 5%; /* Adjust padding to zero */
+            font-size: 1.2em; /* Adjust font size as needed */
+            transition: background-color 0.3s; /* Smooth transition */
+            display: flex; /* Use flexbox */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            height: 100%; /* Ensure anchor elements span the whole height */
+        }
+        .navbar a:hover {
+            background-color: #344374; /* Color on hover */
+        }
+        .active {
+            background-color: #475b9c; /* Color for selected page */
+        }
+        .row {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <!-- Navigation links -->
+        <a href="/">Home</a>
+        <a href="/webcam">Face Explorer 📸</a>
+        <a href="/webcam_scenario" class="active">Scenario Explorer 🎨</a>
+        <a href="/learning_center">Learning Center</a>
+        <a href="/about">About</a>
+    </div>
+    <!-- Main content container -->
+    <div class="container">
+        <!-- Main heading -->
+        <h1>Scenario Explorer</h1>
+
+        <!-- White Container -->
+        <div class="white-container">
+            <!-- Scenario Story -->
+            <div id="scenarioDiv" class="scenario-box">
+                <span style="font-weight: bold;" class="mission-text">Consider this Scenario: <span id="scenarioName"></span></span>
+                <p id="scenarioText" class="mission-text"></p>
+            </div>                
+            <!-- Message -->
+            <div class="message-box">
+                <div id="messageDiv"></div>
+            </div>
+        <!-- Emotion Label and Emoji Image -->
+            <div class="row">
+                <div><img id="emojiImg" src="" alt="Emoji"></div>
+                <div id="emotionLabel" style="display: none;" class="mission-text">Detected Emotion: </div>
+            </div>
+            <!-- Buttons -->
+            <div id="buttonDiv" class="button-box">
+                <button id="submitButton">Submit</button>
+                <button id="nextButton">Next Scenario</button>
+            </div>
+            <!-- Webcam Feed -->
+            <div class="video-container">
+                <video id="video" autoplay></video>
+                <!-- Canvas for capturing still image -->
+                <canvas id="capturedCanvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include the script.js file -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="{{ url_for('static', filename='scenario_script.js') }}"></script>
+</body>
+</html>
