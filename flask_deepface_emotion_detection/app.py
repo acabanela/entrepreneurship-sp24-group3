@@ -50,7 +50,7 @@ def analyze():
 
     img_np = np.array(img)  # Convert PIL Image to numpy array
 
-    result = DeepFace.analyze(img_np, actions=['emotion'])
+    result = DeepFace.analyze(img_np, actions=['emotion'], enforce_detection=False)
 
     return jsonify(result)
 

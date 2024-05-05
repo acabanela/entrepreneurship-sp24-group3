@@ -25,17 +25,15 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application files into the container at /app
-COPY . .
+COPY . /app
 
-# Expose port 4999 to the outside world
-# EXPOSE 4999
-
-# Run the Flask application with Gunicorn
-# CMD ["gunicorn", "-b", "0.0.0.0:4999", "app:app"]
+# Set DEEPFACE_HOME environment variable to the current working directory
+# to avoid downloading the weights on image boot per feedback from Professor Schonfeld
+ENV DEEPFACE_HOME=/app
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
 # For environments with multiple CPU cores, increase the number of workers
 # to be equal to the cores available .
 # Timeout is set to 0 to disable the timeouts of the workers to allow Cloud Run to handle inst
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
+CMD exec gunicorn --bind :$PORT --workers 4 --threads 8 --timeout 0 app:app

@@ -54,6 +54,11 @@
             font-weight: bold;
             line-height: 1.4;
         }
+        .emotion-label {
+            font-size: 1.5em;
+            font-weight: bold;
+            line-height: 1.4;
+        }
         .hand-point {
             font-size: 2.5em;
         }
@@ -168,9 +173,10 @@
                 <!-- First row: Canvas -->
                 <canvas id="canvas"></canvas>
                 <!-- Second row: Emoji Image -->
-                <img id="emojiImg" src="" alt="Emoji">
+                <img id="emojiImg" src="" alt="Emoji" style="display: none;">
                 <!-- Third row: Emotion Label -->
-                <div id="emotionLabel">Emotion: </div>
+                <!-- <div class="emotion-label" id="emotionLabel" style="display: none;">Emotion: </div> -->
+                <div class="emotion-label" id="emotionLabel">Loading...</div>
             </div>
         </div>
     </div>
@@ -178,11 +184,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script>
-        // Show loading message for 15 seconds
+        // Show loading message for 7 seconds
         setTimeout(() => {
             document.getElementById('loadingContainer').style.display = 'none';
             document.getElementById('infoContainer').style.display = 'flex';
-        }, 12000);
+        }, 7000);
     </script>
 </body>
 </html>
