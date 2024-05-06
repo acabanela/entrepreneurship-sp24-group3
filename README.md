@@ -54,16 +54,18 @@ We leverage the benefits of containerization with docker which allows portabilit
 
 ## Dependencies
 
-- Python 3.8
+- Python 3.9
 - OpenCV
 - DeepFace
+- TensorFlow Keras
 - Flask
-- Flask-SocketIO
+- Flask CORS
 - PIL (Python Imaging Library)
 - NumPy
 - Pandas
 - Matplotlib
 - Plotly
+- Gunicorn
 
 ## Usage
 
@@ -71,7 +73,7 @@ We leverage the benefits of containerization with docker which allows portabilit
 Here is the link to the live webapp:
 https://emotion-explorers-web-service-bg44mx37ca-wn.a.run.app/
 
-**Recommended browswer: Google Chrome**
+**Recommended browser: Google Chrome**
 
 1. **Note on cold start:** Google Cloud Run containers will be deleted after 10 minutes of idle time. Therefore, when you first visit the link, please give it 1 minute for GCP to allocate compute resources. There may be some network latency for the first minute after startup when detecting facial expression emotions.
 
