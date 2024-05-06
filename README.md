@@ -1,4 +1,5 @@
-# Emotion Explorers: Webcam Emotion Detection and Analysis
+# Emotion Explorers: 
+# Webcam Emotion Detection and Analysis
 
 This project aims to detect and analyze emotions in real-time using webcam feed, with the objective of assisting individuals with Neurodevelopmental Disorders (NDDs) such as Autism and ADHD in understanding facial expressions and corresponding emotions. The system leverages the DeepFace library for facial analysis with computer vision AI.
 
@@ -64,8 +65,21 @@ We leverage the benefits of containerization with docker which allows portabilit
 - Matplotlib
 - Plotly
 
-## Installation
+## Usage
 
+### Running the live webapp
+Here is the link to the live webapp:
+https://emotion-explorers-web-service-bg44mx37ca-wn.a.run.app/
+
+**Recommended browswer: Google Chrome**
+
+1. **Note on cold start:** Google Cloud Run containers will be deleted after 10 minutes of idle time. Therefore, when you first visit the link, please give it 1 minute for GCP to allocate compute resources. There may be some network latency for the first minute after startup when detecting facial expression emotions.
+
+2. **Webcam guidelines:** The model accuracy may depend on several factors when using the webcam including: lighting conditions, background objects, having multiple people in frame, webcam resolution, and internet connection strength. For best results, ensure that the user's face is well-lit, there is only one person in the center of the frame, and the background is solid as much as possible.
+
+3. Have fun with the app's features including the Face Explorer, Emotion Explorer, and Learning Center. Remember to visit the About page for more information about our mission and the team.
+
+### Running the app locally
 1. Clone the repository:
 
 ```bash
@@ -77,33 +91,17 @@ git clone git@github.com:acabanela/entrepreneurship-sp24-group3.git
 ```bash
 pip install -r requirements.txt
 ```
-
-## Usage
-
-### Running the live webapp
-Here is the link to the live webapp:
-https://emotion-explorers-web-service-bg44mx37ca-wn.a.run.app/
-
-1. Recommended browswer: Google Chrome
-
-1. **Note on cold start:** Google Cloud Run containers will be deleted after 10 minutes of idle time. Therefore, when you first visit the link, please give it 1 minute for GCP to allocate compute resources. There may be some network latency for the first minute after startup when detecting facial expression emotions.
-
-1. **Webcam guidelines:** The model accuracy may depend on several factors when using the webcam including: lighting conditions, background objects, having multiple people in frame, webcam resolution, and internet connection strength. For best results, ensure that the user's face is well-lit, there is only one person in the center of the frame, and the background is solid as much as possible.
-
-1. Have fun with the app's features including the Face Explorer, Emotion Explorer, and Learning Center. Remember to visit the About page for more information about our mission and the team.
-
-### Running the app locally
-1. Run the Flask application:
+3. Run the Flask application:
 
 ```bash
 python app.py
 ```
 
-2. Access the web interface at `http://127.0.0.1:5000` in your browser.
+4. Access the web interface at `http://127.0.0.1:5000` in your browser.
 
-3. Follow the on-screen instructions to start practicing facial expressions using the webcam to analyze emotions.
+5. Follow the on-screen instructions to start practicing facial expressions using the webcam to analyze emotions.
 
-## Webapp links: 
+## Webapp links
 Here are live links to the most recent versions of our application:
 
 * Final MVP: https://emotion-explorers-web-service-bg44mx37ca-wn.a.run.app/
