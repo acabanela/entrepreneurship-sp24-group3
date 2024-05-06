@@ -109,3 +109,10 @@ Here are live links to the most recent versions of our application:
 * Final MVP: https://emotion-explorers-web-service-bg44mx37ca-wn.a.run.app/
 
 * App with Scenario-Based Training Added: https://face-app-scenario-web-service-bg44mx37ca-wn.a.run.app/
+
+## Data Privacy
+
+At Emotion Explorers, we take data privacy seriously and strive to ensure the protection of user information. We only temporarily collect data necessary for the functionality of our application, specifically webcam frames for facial analysis. No personal information is stored or shared with third parties.
+
+## Special Thanks
+We would like to give special thanks to Professor Uri Schonfeld for his invaluable guidance and enthusiasm to help make our project better. We would also like to thank the domain experts and individuals with NDDs for allowing us to interview them and for their helpful insight which allowed us to build a more effective product.
