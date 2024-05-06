@@ -88,6 +88,8 @@ https://emotion-explorers-web-service-bg44mx37ca-wn.a.run.app/
 
 1. **Note on cold start:** Google Cloud Run containers will be deleted after 10 minutes of idle time. Therefore, when you first visit the link, please give it 1 minute for GCP to allocate compute resources. There may be some network latency for the first minute after startup when detecting facial expression emotions.
 
+1. **Webcam guidelines:** The model accuracy may depend on several factors when using the webcam including: lighting conditions, background objects, having multiple people in frame, webcam resolution, and internet connection strength. For best results, ensure that the user's face is well-lit, there is only one person in the center of the frame, and the background is solid as much as possible.
+
 1. Have fun with the app's features including the Face Explorer, Emotion Explorer, and Learning Center. Remember to visit the About page for more information about our mission and the team.
 
 ### Running the app locally
